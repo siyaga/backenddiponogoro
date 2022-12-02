@@ -1,6 +1,6 @@
 # backenddipenogoro
 
-
+# configurasi
 Untuk database menggunakan sql server 
 buat database dan setting di bagian models database index 
 
@@ -16,6 +16,7 @@ const sequelize = new Sequelize('report', 'test', '123456', {
       },
     },
   });
-  
-# untuk menjalankan jangan lupa awal npm install agar package semua terinstall
+
+# menjalankan Program
+untuk menjalankan jangan lupa awal npm install agar package semua terinstall
 untuk menjalankan program menggunakan nodemon start
