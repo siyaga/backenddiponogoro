@@ -5,6 +5,9 @@ module.exports = (sequelize, Sequelize) => {
         },
         projectcode: {
             type: Sequelize.STRING
+        },  
+        projectname: {
+            type: Sequelize.STRING
         },
         dateprojectstart: {
             type: Sequelize.DATE
