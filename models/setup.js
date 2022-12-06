@@ -1,5 +1,6 @@
 module.exports = (sequelize, Sequelize) => {
     const Setup = sequelize.define("setup", {
+       
         name: {
             type: Sequelize.STRING
         },
@@ -20,6 +21,9 @@ module.exports = (sequelize, Sequelize) => {
         },
         position: {
             type: Sequelize.STRING
+        },
+        company_id: {
+            type: Sequelize.INTEGER
         }
 
     }, {
