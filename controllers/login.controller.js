@@ -1,8 +1,12 @@
 
 const db = require('../models');
+var bcrypt = require('bcrypt');
 
+const config = require('../config');
+const jwt = require('jsonwebtoken');
 
 const Users = db.users;
+const Op = db.Sequelize.Op;
 
 const login = async (req, res) => {
     Users.findOne({
@@ -55,7 +59,31 @@ const login = async (req, res) => {
 
 }
 
+const register = async (req, res, next) => {
+
+  
+  let passwordHash = bcrypt.hashSync(req.body.password, 10);
+  let user = {
+    username: req.body.username,
+    password: passwordHash
+  }
+  Users.create(user)
+    .then(data => {
+      res.send({
+        message: "Berhasil Registrasi"
+      });
+    })
+    .catch(err => {
+      res.json({
+        info: "Error",
+        message: err.message
+      });
+    });
+  
+}
+
 
 module.exports = {
-    login
+    login,
+    register
   };
