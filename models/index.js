@@ -21,6 +21,7 @@ db.sequelize = sequelize;
 db.historygenerates = require('./historygenerate')(sequelize, Sequelize);
 db.historylogos = require('./historylogo')(sequelize, Sequelize);
 db.historyuploads = require('./historyupload')(sequelize, Sequelize);
+db.users = require('./user')(sequelize, Sequelize);
 db.report = require('./report')(sequelize, Sequelize);
 db.setup = require('./setup')(sequelize, Sequelize);
 
