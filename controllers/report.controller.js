@@ -7,7 +7,7 @@ const Historygenerates = db.historygenerates;
 const Historylogos = db.historylogos;
 const Historyuploads = db.historyuploads;
 const Reports = db.report;
-const Setups = db.setup;
+const Setups = db.setups;
 const Op = db.Sequelize.Op;
 
 
@@ -104,7 +104,7 @@ const uploads = async (req, res) => {
           })
           .catch((error) => {
             res.status(500).send({
-              message: "Fail to import data into database!",
+              message: "Failed to import data into database!",
               error: error.message,
             });
           });
