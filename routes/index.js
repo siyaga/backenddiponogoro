@@ -14,7 +14,6 @@ const moment = require('moment');
 // passport.authenticate("jwt", {
 //     session: false
 //   }),
-
 // Uplaod
 router.post('/report/upload',upload.single('file'),reportController.uploads );
 
