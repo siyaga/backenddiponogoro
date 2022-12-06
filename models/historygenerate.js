@@ -5,6 +5,15 @@ module.exports = (sequelize, Sequelize) => {
         },
         filegenerate: {
             type: Sequelize.STRING
+        },
+        filterbyname: {
+            type: Sequelize.STRING
+        },
+        dateprojectstart: {
+            type: Sequelize.DATE
+        },
+        dateprojectend: {
+            type: Sequelize.DATE
         }
     }, {
         

@@ -3,13 +3,10 @@ module.exports = (sequelize, Sequelize) => {
         name: {
             type: Sequelize.STRING
         },
-        filelogo: {
-            type: Sequelize.STRING
-        },
         date: {
             type: Sequelize.DATE
         },
-        Shift: {
+        shift: {
             type: Sequelize.STRING
         }, 
         in: {
