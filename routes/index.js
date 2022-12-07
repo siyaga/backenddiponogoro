@@ -15,7 +15,8 @@ router.post('/report/upload',upload.single('file'),reportController.uploads );
 router.get('/report', reportController.getReport);
 
 // Add Setup
-router.post('/setup', setupController.insertSetUp)
+router.post('/setup/add', setupController.insertSetUp)
+router.get('/setup', setupController.getSetup)
 
 
 
