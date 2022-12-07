@@ -119,6 +119,7 @@ const uploads = async (req, res) => {
 
 const getReport = async (req, res) => {
   Reports.findAll({
+    order: [['date', 'ASC']],
     attributes: ['id', 'name', 'date','shift','in','out','task']
   })
     .then(report => {
@@ -141,36 +142,74 @@ const getReport = async (req, res) => {
     });
 }  
 
-// const getFilter = async (req, res) => {
-//   const name = req.params.name;
-//   const dateStart = req.params.datestart
-//   const dateEnd = req.params.dateend
+const getFilterSingle = async (req, res) => {
+  const namebody = req.body.name;
+  const dateStartbody = req.body.datestart
+  const dateEndbody = req.body.dateend
 
-//   Reports.findAll({
-//     attributes: ['id', 'name', 'date','shift','in','out','task']
-//   })
-//     .then(report => {
-//       if (report.length < 1) {
+  Reports.findAll({
+    where: {
+      name: namebody,
+      date: {[Op.between] :[dateStartbody, dateEndbody]}
+    },
+    order: [['date', 'ASC']],
+    attributes: ['id', 'name', 'date','shift','in','out','task']
+  })
+    .then(report => {
+      if (report.length < 1) {
         
 
-//         res.send({
-//           message: "report tidak ada"
-//         });
-//       } else {
+        res.send({
+          message: "report tidak ada"
+        });
+      } else {
         
-//         res.send({report});
-//       }
-//     })
-//     .catch(err => {
-//       res.json({
-//         info: "Error",
-//         message: err.message
-//       });
-//     });
-// }  
+        res.send({report});
+      }
+    })
+    .catch(err => {
+      res.json({
+        info: "Error",
+        message: err.message
+      });
+    });
+}  
+
+const getFilterMulti = async (req, res) => {
+  const dateStartbody = req.body.datestart
+  const dateEndbody = req.body.dateend
+
+  Reports.findAll({
+    where: {
+      date: {[Op.between] :[dateStartbody, dateEndbody]}
+    },
+    order: [['date', 'ASC']],
+    attributes: ['id', 'name', 'date','shift','in','out','task']
+  })
+    .then(report => {
+      if (report.length < 1) {
+        
+
+        res.send({
+          message: "report tidak ada"
+        });
+      } else {
+        
+        res.send({report});
+      }
+    })
+    .catch(err => {
+      res.json({
+        info: "Error",
+        message: err.message
+      });
+    });
+}  
   
 
   module.exports = {
     uploads,
     getReport,
+    getFilterSingle,
+    getFilterMulti
   };
