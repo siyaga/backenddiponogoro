@@ -19,10 +19,13 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 // tabelnya
 db.historygenerates = require('./historygenerate')(sequelize, Sequelize);
-db.historylogos = require('./historylogo')(sequelize, Sequelize);
+db.companies = require('./company')(sequelize, Sequelize);
 db.historyuploads = require('./historyupload')(sequelize, Sequelize);
+db.users = require('./user')(sequelize, Sequelize);
 db.report = require('./report')(sequelize, Sequelize);
-db.setup = require('./setup')(sequelize, Sequelize);
+db.setups = require('./setup')(sequelize, Sequelize);
+// db.setups.hashMany(db.setups, {foreignKey:'company_id'});
+// db.companies.belongsTo(db.companies,{foreignKey:'id'})
 
 
 

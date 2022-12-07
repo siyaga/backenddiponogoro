@@ -3,10 +3,27 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var session = require('express-session');
+const passport = require('passport');
+
 
 var indexRouter = require('./routes/index');
 
 var app = express();
+
+// passport
+app.use(passport.initialize());
+require('./auth');
+
+app.set('trust proxy', 1)
+app.use(session({
+  secret: '12345',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { 
+    secure: true
+ }
+}))
 
 
 app.use(logger('dev'));
