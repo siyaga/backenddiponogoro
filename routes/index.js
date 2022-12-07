@@ -26,7 +26,8 @@ router.get('/report/filter/multi', reportController.getFilterMulti);
 
 
 // Add Setup
-router.post('/setup', setupController.insertSetUp)
+router.post('/setup/add', setupController.insertSetUp)
+router.get('/setup', setupController.getSetup)
 
 
 
