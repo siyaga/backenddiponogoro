@@ -142,6 +142,31 @@ const getReport = async (req, res) => {
     });
 }  
 
+
+const getReportById = async (req, res) => {
+  const idpramas = req.params.id;
+  Reports.findOne({
+    where: {id: idpramas},  
+    attributes: ['id', 'name', 'date','shift','in','out','task']
+  })
+  
+  .then(data => {
+    if (data) {
+      res.send(data);
+    } else {
+      res.status(404).send({
+        message: "Data tidak ada" + idpramas
+      })
+    }
+  })
+    .catch(err => {
+      res.json({
+        info: "Error",
+        message: err.message
+      });
+    });
+}  
+
 const getFilterSingle = async (req, res) => {
   const namebody = req.body.name;
   const dateStartbody = req.body.datestart
@@ -205,11 +230,38 @@ const getFilterMulti = async (req, res) => {
       });
     });
 }  
+
+const editReport = async (req, res) => {
+  const idbody = req.params.id;
+  let reports = {
+    task: req.body.task
+  }
+
+  Reports.update(reports,{
+    where:{
+      id:idbody
+    }
+    })
+    .then(report => {
+      
+        res.send({
+          message: "report berhasil di Update"
+        });
+    })
+    .catch(err => {
+      res.json({
+        info: "Error",
+        message: err.message
+      });
+    });
+}
   
 
   module.exports = {
     uploads,
     getReport,
+    getReportById,
     getFilterSingle,
-    getFilterMulti
+    getFilterMulti,
+    editReport
   };
