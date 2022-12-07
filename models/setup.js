@@ -11,10 +11,10 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING
         },
         dateprojectstart: {
-            type: Sequelize.DATE
+            type: Sequelize.DATEONLY
         },
         dateprojectend: {
-            type: Sequelize.DATE
+            type: Sequelize.DATEONLY
         }, 
         reportedto: {
             type: Sequelize.STRING

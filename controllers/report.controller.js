@@ -76,7 +76,7 @@ const uploads = async (req, res) => {
             resultcheckout = validatorcheckout.slice(0,5)
           }
           let dateformat = moment(validatordate).format('YYYY-MM-DD')
-
+          console.log(dateformat);
           let report = {
             name: row[1],
             date: dateformat,
@@ -140,6 +140,34 @@ const getReport = async (req, res) => {
       });
     });
 }  
+
+// const getFilter = async (req, res) => {
+//   const name = req.params.name;
+//   const dateStart = req.params.datestart
+//   const dateEnd = req.params.dateend
+
+//   Reports.findAll({
+//     attributes: ['id', 'name', 'date','shift','in','out','task']
+//   })
+//     .then(report => {
+//       if (report.length < 1) {
+        
+
+//         res.send({
+//           message: "report tidak ada"
+//         });
+//       } else {
+        
+//         res.send({report});
+//       }
+//     })
+//     .catch(err => {
+//       res.json({
+//         info: "Error",
+//         message: err.message
+//       });
+//     });
+// }  
   
 
   module.exports = {
