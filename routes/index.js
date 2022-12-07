@@ -19,6 +19,11 @@ router.post('/report/upload',upload.single('file'),reportController.uploads );
 
 /* GET all tabel Report. */
 router.get('/report', reportController.getReport);
+/* GET Filter single tabel Report. */
+router.get('/report/filter/single', reportController.getFilterSingle);
+/* GET Filter tabel Multi. */
+router.get('/report/filter/multi', reportController.getFilterMulti);
+
 
 // Add Setup
 router.post('/setup', setupController.insertSetUp)
