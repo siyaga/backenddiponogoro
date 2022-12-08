@@ -82,8 +82,14 @@ const register = async (req, res, next) => {
   
 }
 
+const logout = async (req, res, next) =>{
+  req.session.destroy();
+
+}
+
 
 module.exports = {
     login,
-    register
+    register,
+    logout
   };

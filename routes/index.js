@@ -1,4 +1,5 @@
 var express = require('express');
+const passport = require('passport');
 var router = express.Router();
 const upload = require("../middleware/upload");
 
@@ -15,12 +16,16 @@ const moment = require('moment');
 //     session: false
 //   }),
 // Uplaod
-router.post('/report/upload',upload.single('file'),reportController.uploads );
+router.post('/report/upload',passport.authenticate("jwt", {
+    session: false
+  }),upload.single('file'),reportController.uploads );
 
 /* GET all tabel Report. */
 router.get('/report', reportController.getReport);
 /* GET Filter single tabel Report. */
-router.get('/report/filter/single', reportController.getFilterSingle);
+router.get('/report/filter/single',passport.authenticate("jwt", {
+    session: false
+  }), reportController.getFilterSingle);
 /* GET Filter tabel Multi. */
 router.get('/report/filter/multi', reportController.getFilterMulti);
 /* GET Detail tabel Report. */
@@ -47,5 +52,7 @@ router.post('/setup', setupController.insertSetUp)
 router.post('/login', loginController.login);
 /* Regis. */
 router.post('/register', loginController.register);
+/* Login. */
+router.get('/logout', loginController.logout);
 
 module.exports = router;
