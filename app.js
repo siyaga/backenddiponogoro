@@ -58,9 +58,5 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-let port = 8080;
-app.listen(port, () => {
-  console.log(`Running at localhost:${port}`);
-});
 
 module.exports = app;
