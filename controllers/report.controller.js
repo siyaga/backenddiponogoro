@@ -29,8 +29,11 @@ const uploads = async (req, res) => {
   
         rows.forEach((row) => {
           let validatorshift = row[2]
-          if(validatorshift == "S2"){
+          if(validatorshift == "S2" && (row[5] == "H" || row[6] == "WFH")){
             validatorshift = "Work"
+          }
+          else if(validatorshift == "S2" && (row[6] == "CT" || row[6] == "I" ||  row[6] == "S")){
+            validatorshift = "Leave"
           } else if(validatorshift == "dayoff"){
             validatorshift = "Holiday"
           }
